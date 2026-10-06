@@ -15,6 +15,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm test
+solo-en-main:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Esto solo se ve en main"
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -24,8 +29,3 @@ jobs:
           node-version: '20'
       - name: Simulador Linter
         run: node --version
-      solo-en-main:
-        if: github.ref == 'refs/heads/main'
-        runs-on: ubuntu-latest
-        steps:
-          - run: echo "Esto solo se ve en main"
