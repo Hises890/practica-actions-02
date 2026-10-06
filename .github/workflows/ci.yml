@@ -20,6 +20,12 @@ jobs:
         env:
           MI_SECRETO: ${{ secrets.SALUDO_SECRETO }}
         run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
+      - name: Avisar de fallo
+        if: failure()
+        run: echo "Algún step anterior ha fallado"
+      - name: Limpieza final
+        if: always()
+        run: echo "Esto se ejecuta pase lo que pase"
 
   solo-en-main:
     if: github.ref == 'refs/heads/main'
