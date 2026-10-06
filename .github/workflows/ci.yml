@@ -22,7 +22,7 @@ jobs:
         run: echo "El secreto tiene $(echo -n "$MI_SECRETO" | wc -c) caracteres"
       - name: Avisar de fallo
         if: failure()
-        run: echo "Algún step anterior ha fallado"
+        run: echo "Algún step anterior ha fallado
       - name: Limpieza final
         if: always()
         run: echo "Esto se ejecuta pase lo que pase"
